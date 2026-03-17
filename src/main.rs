@@ -1,3 +1,8 @@
+use clap::Parser;
+use magnetite as mag;
+
 fn main() {
-    magnetite::run();
+    let args = mag::Args::parse();
+
+    mag::run(args);
 }
