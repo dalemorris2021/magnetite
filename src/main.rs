@@ -4,5 +4,7 @@ use magnetite as mag;
 fn main() {
     let args = mag::Args::parse();
 
-    mag::run(args);
+    if let Err(e) = mag::run(args) {
+        eprintln!("{}", e);
+    };
 }
