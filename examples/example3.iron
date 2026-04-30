@@ -1,0 +1,51 @@
+local io = import("std.io")
+
+local main = fun start
+    -- `local` before a variable denotes a variable that is local to its scope
+    local a = 5
+
+    --[[
+        If there is no `local`, then the variable is global and can be accessed
+        directly by any source file that loads the code from this file.
+    ]]
+    b = 8
+
+    local c = min a b
+    local d = max a b
+
+    --[[
+        Curly braces inside a string denote a formatted value.
+
+        Square brackets denote a list.
+    ]]
+    io.printf "The minimum is {} and the maximum is {}\n" [c, d]
+end
+
+--[[
+    Iron uses expressions in many cases which leads to
+    a pattern commonly known as "implicit returns".
+
+    Here, if x is less than y, the function evaluates to x (i.e. x is returned)
+    otherwise the function evaluates to y (i.e. y is returned).
+]]
+local min = fun x y start
+    if x < y then x else y end
+end
+
+--[[
+    The return statement may still be used to explicitly cause a function to
+    return a given value.
+]]
+local max = fun x y start
+    if x > y then
+        return x
+    else
+        start
+            y -- y is the last expression evaluated, so the block returns y
+        end
+    end
+end
+
+if __FILE__ == $0 then
+    main
+end

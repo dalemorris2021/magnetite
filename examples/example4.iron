@@ -1,0 +1,29 @@
+local io = import "std.io"
+
+local main = fun start
+    -- Parentheses denote a tuple
+    local tuple = ("John", 32)
+
+    -- Curly braces denote a map type
+    local map = {}
+    map["Taylor"] = 22
+
+    -- Underscore is an optional spacing character for long numbers.
+    map[4] = 100_000
+
+    -- Any immutable type may be used as a map key.
+    map[("John", 32)] = "I'm a value"
+
+    --[[
+        Using `_ =` explicitly discards a value which can be useful for function
+        calls that return an unneeded value
+    ]]
+    
+    _ = io.printf "{}\n" [map[4]]
+
+    ()
+end
+
+if __FILE__ == $0 then
+    main
+end
