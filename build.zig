@@ -16,6 +16,8 @@ pub fn build(b: *std.Build) void {
         .files = &.{
             "src/main.c",
             "src/lib.c",
+            "src/chunk.c",
+            "src/memory.c",
         },
         .flags = &.{ "-std=c99", "-g", "-Wall", "-Wextra", "-Wpedantic", "-Werror" },
     });
